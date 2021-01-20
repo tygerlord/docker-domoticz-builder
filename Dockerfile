@@ -5,7 +5,6 @@ WORKDIR /app
 
 RUN export DEBIAN_FRONTEND=noninteractive && \ 
 	apt-get update && \
-	apt-get install -y --no-install-recommends ca-certificates && \
 	apt-get install -y --no-install-recommends make gcc g++ libssl-dev git rsync \
 		libcurl4-gnutls-dev libusb-dev python3-dev zlib1g-dev libcereal-dev liblua5.3-dev uthash-dev \
 		wget sudo python3-setuptools python3-pip python3-dev && \
@@ -13,7 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 	pip3 install pyserial rpi.GPIO  && \
 	echo "******** build cmake  ********" && \
 	apt-get remove --purge --auto-remove cmake && \
-	wget https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-3.17.0.tar.gz && \
+	wget --no-check-certificate https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-3.17.0.tar.gz && \
 	tar -xzvf cmake-3.17.0.tar.gz && \
 	rm cmake-3.17.0.tar.gz && \
 	cd cmake-3.17.0 && \
