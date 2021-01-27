@@ -17,7 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   buildx:
     # The type of runner that the job will run on
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -40,7 +40,5 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
         
       - name: buildx
-        run: docker buildx build --platform linux/arm/v7,linux/amd64 --load -t tygerlord/domoticz .           
+        run: docker buildx build --platform linux/arm/v7,linux/amd64 --push -t tygerlord/domoticz .           
           
-      - name: push
-        run: docker pull tygerlord/domoticz

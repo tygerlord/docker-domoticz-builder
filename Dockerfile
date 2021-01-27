@@ -15,15 +15,15 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && pip3 install pyserial rpi.GPIO \
  && echo "******** build cmake  ********" \
  && apt-get remove --purge --auto-remove cmake \
- && wget --no-check-certificate https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-3.17.0.tar.gz \
- && tar -xzvf cmake-3.17.0.tar.gz \
- && rm cmake-3.17.0.tar.gz \
- && cd cmake-3.17.0 \
+ && wget --no-check-certificate https://github.com/Kitware/CMake/releases/download/v3.19.3/cmake-3.19.3.tar.gz \
+ && tar -xzvf cmake-3.19.3.tar.gz \
+ && rm cmake-3.19.3.tar.gz \
+ && cd cmake-3.19.3 \
  && ./bootstrap \
  && make \
  && make install \
  && cd .. \
- && rm -fr cmake-3.17.0 \
+ && rm -fr cmake-3.19.3 \
  && echo "******** build boost  ********" \
  && apt-get remove --purge --auto-remove libboost-dev libboost-thread-dev libboost-system-dev libboost-atomic-dev libboost-regex-dev libboost-chrono-dev \
  && wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz \
