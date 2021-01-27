@@ -1,9 +1,12 @@
 FROM debian:buster-slim 
 
+ARG TARGETPLATFORM 
+
 RUN mkdir /app
 WORKDIR /app
 
 RUN export DEBIAN_FRONTEND=noninteractive \
+ && echo "I'm building for $TARGETPLATFORM" \
  && apt-get update \
  && apt-get install -y --no-install-recommends make gcc g++ libssl-dev git rsync \
  	libcurl4-gnutls-dev libusb-dev python3-dev zlib1g-dev libcereal-dev liblua5.3-dev uthash-dev \
