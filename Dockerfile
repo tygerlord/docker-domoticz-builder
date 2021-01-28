@@ -5,6 +5,8 @@ ARG TARGETPLATFORM
 RUN mkdir /app
 WORKDIR /app
 
+ENV _FILE_OFFSET_BITS=64
+
 RUN export DEBIAN_FRONTEND=noninteractive \
  && echo "I'm building for $TARGETPLATFORM" \
  && apt-get update \
