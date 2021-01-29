@@ -5,8 +5,6 @@ ARG TARGETPLATFORM
 RUN mkdir /app
 WORKDIR /app
 
-ENV _FILE_OFFSET_BITS=64
-
 RUN export DEBIAN_FRONTEND=noninteractive \
  && echo "I'm building for $TARGETPLATFORM" \
  && apt-get update \
@@ -22,7 +20,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && rm cmake-3.19.3.tar.gz \
  && cd cmake-3.19.3 \
  && ./bootstrap \
- && make \
+ && make CFLAGS=-D_FILE_OFFSET_BITS=64 \
  && make install \
  && cd .. \
  && rm -fr cmake-3.19.3 \
